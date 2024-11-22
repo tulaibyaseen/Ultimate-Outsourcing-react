@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import ArrowImage from "../../assets/svg/navbar/arrow.svg";
 import NavbarLogo from "../../assets/images/navbar/NavbarLogo.svg";
+import ArrowLogoBlue from "../../assets/svg/navbar/arrowBluecopy.svg";
+
 import { LuMenuSquare } from "react-icons/lu";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const NavbarLi = [
     "Find Jobs",
     "Career Advice",
@@ -12,6 +16,10 @@ const Navbar = () => {
     "Upload Resume",
     "Apply For Me",
   ];
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   return (
     <>
       <section className="w-full h-full border">
@@ -24,19 +32,17 @@ const Navbar = () => {
             Are You Recruiting?
           </p>
         </div>
-        <div className="flex items-center justify-between px-2 sm:px-10 py-2">
-          <img
-            src={NavbarLogo}
-            alt="NavbarLogo"
-            className="w-40 sm:w-auto"
-          />
-          <div className="flex items-center gap-1 sm:gap-3">
-            <button className="md:w-24 rounded md:h-11 w-16 h-8 text-xs md:text-sm font-lato font-semibold tracking-wide border-none bg-brand-skyBlue-navbar text-white ">
-              Sign Up
-            </button>
-            <button className="md:w-24 rounded md:h-11 w-16 h-8 text-xs md:text-sm font-lato font-semibold tracking-wide border-2 border-brand-skyBlue-navbar text-brand-skyBlue-navbar ">
-              Login
-            </button>
+        <div className="w-full hidden md:block">
+          <div className="flex items-center justify-between px-2 sm:px-10 py-2 ">
+            <img src={NavbarLogo} alt="NavbarLogo" className="w-40 sm:w-auto" />
+            <div className="flex items-center gap-1 sm:gap-3">
+              <button className="md:w-24 rounded md:h-11 w-16 h-8 text-xs md:text-sm font-lato font-semibold tracking-wide border-none bg-brand-skyBlue-navbar text-white ">
+                Sign Up
+              </button>
+              <button className="md:w-24 rounded md:h-11 w-16 h-8 text-xs md:text-sm font-lato font-semibold tracking-wide border-2 border-brand-skyBlue-navbar text-brand-skyBlue-navbar ">
+                Login
+              </button>
+            </div>
           </div>
         </div>
         <div className="flex flex-row-reverse md:flex-row items-center justify-between px-2 md:px-10  bg-brand-skyBlue-navbar w-full h-[51px]">
@@ -54,7 +60,7 @@ const Navbar = () => {
               })}
             </ul>
           </div>
-          <div className=" block md:hidden  ">
+          <div className=" block md:hidden" onClick={toggleSidebar}>
             <LuMenuSquare className="text-4xl text-brand-white" />
           </div>
           <div className="flex  items-center justify-center gap-2 ">
@@ -69,6 +75,48 @@ const Navbar = () => {
           </div>
         </div>
       </section>
+
+      {/* Sidebar */}
+      <div
+        className={`fixed top-0 left-0 h-full bg-white z-50 shadow-lg transition-transform transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } w-64 md:hidden`}
+      >
+        <div className="p-4 flex flex-col  justify-around gap-28 font-lato  ">
+          {/* Close button */}
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <img src={NavbarLogo} alt="Navbar Logo" className="w-40 h-auto " />
+            <img
+              src={ArrowLogoBlue}
+              alt=""
+              className=" w-6 "
+              onClick={toggleSidebar}
+            />
+            {/* <button className="text-black text-xl font-bold mb-4">×</button> */}
+          </div>
+          {/* Navigation Links */}
+          <ul className="flex flex-col gap-4  ">
+            {NavbarLi.map((navbar, index) => (
+              <li
+                key={index}
+                className="text-gray-700 text-lg border-b  font-medium hover:text-brand-skyBlue-navbar"
+              >
+                {navbar}
+              </li>
+            ))}
+          </ul>
+          {/* Buttons */}
+          <div className="flex flex-col gap-4">
+            <button className="w-full py-2 text-white bg-brand-skyBlue-navbar rounded-md font-semibold">
+              Sign Up
+            </button>
+            <button className="w-full py-2 border-2 border-brand-skyBlue-navbar text-brand-skyBlue-navbar rounded-md font-semibold">
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

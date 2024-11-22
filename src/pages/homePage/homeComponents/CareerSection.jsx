@@ -1,7 +1,10 @@
 // import React from 'react'
 import Image12 from "../../../assets/svg/homePage/search icon.svg";
+import Image15 from "../../../assets/svg/homePage/first.svg";
+
 import Image13 from "../../../assets/svg/homePage/flower.svg";
 import Image14 from "../../../assets/svg/homePage/smart.svg";
+
 const CareerSection = () => {
   const searches = [
     "Work remotely",
@@ -36,7 +39,7 @@ const CareerSection = () => {
       button: "Get started",
     },
     {
-      icon: Image14, // Replace this with the actual speaker image/icon
+      icon: Image15, // Replace this with the actual speaker image/icon
       title: "SMART",
       description:
         "Don't just search for jobs. Let employers find you. Show your resume to good companies.",
@@ -72,25 +75,25 @@ const CareerSection = () => {
           {items.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-around text-center bg-white rounded-lg shadow-md gap-4 p-6"
+              className="flex flex-col items-center justify-around text-center  gap-4 p-6"
             >
               {/* Icon */}
-              <div className="h- ">
+              <div className="">
                 <img src={item.icon} alt="" />
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-semibold text-gray-800">
+              <h3 className="text-2xl font-lato font-semibold text-gray-800">
                 {item.title}
               </h3>
 
               {/* Description */}
-              <p className="text-gray-600 text-sm px-8 ">
+              <p className="text-gray-600 text-sm px-8 md:px-2 lg:px-8 ">
                 {item.description}
               </p>
 
               {/* Button */}
-              <button className="border border-blue-500 text-blue-500 px-4 py-2 rounded-lg hover:bg-blue-500 hover:text-white transition-all duration-200">
+              <button className="border-2 border-brand-skyBlue-navbar text-brand-skyBlue-navbar text-lg px-4 py-2  hover:bg-brand-skyBlue-navbar hover:text-white transition-all duration-200">
                 {item.button}
               </button>
             </div>

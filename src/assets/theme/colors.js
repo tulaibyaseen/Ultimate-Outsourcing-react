@@ -7,6 +7,7 @@ const colors = {
   "brand-white": "#FFFFFF",
   "brand-gray-footer": "#424042",
   "brand-bg-Navi": "#DCECF5",
+  "brand-career-guidance-gray": "#555555",
 };
 
 export default colors;
